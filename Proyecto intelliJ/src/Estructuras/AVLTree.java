@@ -14,6 +14,10 @@ public class AVLTree<T extends Comparable<T>> {
         this.root = root;
     }
 
+    public int altura() {
+        return height(this.getRoot());
+    }
+
     public int height(AVLNode<T> N) {
         if (N == null)
             return 0;
@@ -48,6 +52,7 @@ public class AVLTree<T extends Comparable<T>> {
     }
 
     private AVLNode<T> buscarNodo(AVLNode<T> node, T valor) {
+
         if (node == null)
             return null;
 
@@ -57,7 +62,23 @@ public class AVLTree<T extends Comparable<T>> {
             return buscarNodo(node.getRight(), valor);
         else
             return buscarNodo(node.getLeft(), valor);
+    }
 
+    public int saltosHastaNodo(T valor) {
+        return saltosHastaNodo(this.getRoot(), valor);
+    }
+
+    private int saltosHastaNodo(AVLNode<T> node, T valor) {
+        int retorno = 1;
+        if (node == null)
+            return retorno;
+
+        if (valor.compareTo(node.getValor()) == 0)
+            return retorno;
+        else if (valor.compareTo(node.getValor()) > 0)
+            return retorno + saltosHastaNodo(node.getRight(), valor);
+        else
+            return retorno + saltosHastaNodo(node.getLeft(), valor);
     }
 
     public AVLNode<T> leftRotate(AVLNode<T> x) {

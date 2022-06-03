@@ -29,6 +29,14 @@ public class Biblioteca {
         indiceGeneros.printTree(indiceGeneros.getRoot(), "", true);
     }
 
+    public int saltosHastaNodo(String valor) {
+        return indiceGeneros.saltosHastaNodo(valor);
+    }
+
+    public int altura() {
+        return indiceGeneros.altura();
+    }
+
     @Override
     public String toString() {
         return "Biblioteca [libros=" + libros + "]";

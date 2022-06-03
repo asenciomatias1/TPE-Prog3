@@ -11,7 +11,7 @@ public class CSVWritter {
     public void guardarArchivo(LinkedList<Libro> libros, String path) {
         BufferedWriter bw = null;
         try {
-            File file = new File(path);/*"C:/Users/Facu/Documents/Facultad/Programacion 3/salida.csv"*/
+            File file = new File(path);
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -25,6 +25,7 @@ public class CSVWritter {
                 bw.write(contenido);
                 bw.newLine();
             }
+            System.out.println("Archivo guardado en: " + path);
 
         } catch (IOException ioe) {
             ioe.printStackTrace();

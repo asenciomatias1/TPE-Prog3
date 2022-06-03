@@ -25,8 +25,8 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "[titulo=" + titulo + ", autor=" + autor + ", paginas=" + paginas + ", generos="
-                + Arrays.toString(generos) + "]\n";
+        return "titulo=" + titulo + ", autor=" + autor + ", paginas=" + paginas + ", generos="
+                + Arrays.toString(generos) + "\n";
     }
 
 }

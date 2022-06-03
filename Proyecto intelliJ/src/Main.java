@@ -8,11 +8,11 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-
-        String[] datasets = {"C:/Users/Facu/Documents/Facultad/Programacion 3/datasets/dataset1.csv",
-                "C:/Users/Facu/Documents/Facultad/Programacion 3/datasets/dataset2.csv",
-                "C:/Users/Facu/Documents/Facultad/Programacion 3/datasets/dataset3.csv",
-                "C:/Users/Facu/Documents/Facultad/Programacion 3/datasets/dataset4.csv"};
+        String localDir = System.getProperty("user.dir");
+        String[] datasets = {localDir + "/datasets/dataset1.csv",
+                localDir + "/datasets/dataset2.csv",
+                localDir + "/datasets/dataset3.csv",
+                localDir + "/datasets/dataset4.csv"};
 
         CSVReader csvr = new CSVReader();
         CSVWritter writter = new CSVWritter();
@@ -33,15 +33,23 @@ public class Main {
         }
         Biblioteca b1 = new Biblioteca(csvr.cargarLibros(csvPath));
         b1.imprimirIndice();
+        System.out.println("la altura del indice generado es de: " + b1.altura());
         String genero;
         Scanner scannerGenero = new Scanner(System.in);
         System.out.println("Elija un genero");
         genero = scannerGenero.nextLine();
+        long v1 = System.nanoTime();
         LinkedList<Libro> resultado = b1.buscarGenero(genero);
+        long v2 = System.nanoTime();
         System.out.println(resultado);
+        System.out.println(v2);
+        System.out.println(v1);
+        double diferencia = (v2 - v1);
+        int saltos = b1.saltosHastaNodo(genero);
+        System.out.println("la busqueda tardo: " + diferencia + " nanosegundos, y paso por " + saltos + ((saltos == 1) ? " nodo" : " nodos"));
         Scanner scannerPath = new Scanner(System.in);
-        System.out.println("En donde le gustaria guardar el archivo");
-        String pathToFile = scannerPath.nextLine();//espera por ejemplo C:/Users/Usuario/Documents/Programacion 3/salida.csv
-        writter.guardarArchivo(resultado, pathToFile);
+        System.out.println("Elija un nombre para el archivo, el mismo se guardara en " + localDir + "\\resultados\\");
+        String pathToFile = scannerPath.nextLine();
+        writter.guardarArchivo(resultado, localDir + "\\resultados\\" + pathToFile + ".csv");
     }
 }
