@@ -9,6 +9,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         String localDir = System.getProperty("user.dir");
+        localDir += "\\src";
         String[] datasets = {localDir + "/datasets/dataset1.csv",
                 localDir + "/datasets/dataset2.csv",
                 localDir + "/datasets/dataset3.csv",
