@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Biblioteca {
-    ArrayList<Libro> libros;
+    Libro[] libros;
     AVLTree<String> indiceGeneros;
 
-    public Biblioteca(ArrayList<Libro> libros) {
+    public Biblioteca(Libro[] libros) {
         this.libros = libros;
         this.indiceGeneros = new AVLTree<>();
         for (Libro l :
