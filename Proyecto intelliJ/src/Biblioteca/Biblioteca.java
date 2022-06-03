@@ -21,6 +21,19 @@ public class Biblioteca {
         }
     }
 
+    public LinkedList<Libro> buscarGeneroSinIndice(String genero) {
+        LinkedList<Libro> resultado = new LinkedList<>();
+        for (Libro l :
+                libros) {
+            for (String g :
+                    l.getGeneros()) {
+                if (g.equals(genero))
+                    resultado.add(l);
+            }
+        }
+        return resultado;
+    }
+
     public LinkedList<Libro> buscarGenero(String genero) {
         return indiceGeneros.buscarLibros(genero);
     }
